@@ -1,30 +1,30 @@
 <section>
-  <form class="title-form">
+  <form class="title-form" [formGroup]="taskForms">
 
     <div class="title-form">
       <label for="title-task">Titre de la tâche</label>
-      <input name="title-task" type="text" placeholder="Titre de la tâche" id="title-task" [(ngModel)]="enterTitleTask"
-             [ngModelOptions]="{standalone: true}"
-             (ngModelChange)="onEditTitleTask($event)"
-             [class.is-invalid]="titleWasEmpty">
+      <input type="text"
+             placeholder="Titre de la tâche"
+             id="title-task"
+             formControlName="enterTitleTask">
     </div>
+    @if (taskForms.controls.enterTitleTask.dirty && taskForms.controls.enterTitleTask.invalid) {
+      <p>Le titre est obligatoire</p>
+    }
+
 
     <div class="title-form">
       <label for="description-task">Description de la tâche</label>
-      <textarea type="text" placeholder="Description de la tâche" id="description-task"
-                [(ngModel)]="enterDescriptionTask"
-                [ngModelOptions]="{standalone: true}"
-                (ngModelChange)="onEditDescriptionTask($event)"
-                [class.is-invalid]="descriptionWasEmpty"></textarea>
+      <textarea type="text"
+                placeholder="Description de la tâche"
+                id="description-task"
+                formControlName="enterDescriptionTask"></textarea>
     </div>
-
-    @if (validationMessage) {
-      <div class="errorMessage">
-        {{validationMessage}}
-      </div>
+    @if (taskForms.controls.enterDescriptionTask.dirty && taskForms.controls.enterDescriptionTask.invalid) {
+      <p>La description est obligatoire</p>
     }
 
-    <button (click)="onSaveTask()">Enregistrer</button>
+    <button (click)="onSaveTask()" [disabled]="taskForms.invalid">Enregistrer</button>
 
   </form>
 
