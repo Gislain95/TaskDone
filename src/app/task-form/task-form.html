@@ -1,0 +1,42 @@
+<section>
+  <form class="title-form">
+
+    <div class="title-form">
+      <label for="title-task">Titre de la tâche</label>
+      <input name="title-task" type="text" placeholder="Titre de la tâche" id="title-task" [(ngModel)]="enterTitleTask"
+             [ngModelOptions]="{standalone: true}"
+             (ngModelChange)="onEditTitleTask($event)"
+             [class.is-invalid]="titleWasEmpty">
+    </div>
+
+    <div class="title-form">
+      <label for="description-task">Description de la tâche</label>
+      <textarea type="text" placeholder="Description de la tâche" id="description-task"
+                [(ngModel)]="enterDescriptionTask"
+                [ngModelOptions]="{standalone: true}"
+                (ngModelChange)="onEditDescriptionTask($event)"
+                [class.is-invalid]="descriptionWasEmpty"></textarea>
+    </div>
+
+    @if (validationMessage) {
+      <div class="errorMessage">
+        {{validationMessage}}
+      </div>
+    }
+
+    <button (click)="onSaveTask()">Enregistrer</button>
+
+  </form>
+
+  <ul>
+    @for (task of myTasks; track task.id){
+      <li>
+        <h3>{{task.title | uppercase}}</h3>
+        <p [innerHTML]="task.description | boldItalic"></p>
+        <button class="btnDelete" (click)="onDeleteTask(task.id)">Supprimer</button>
+        <button class="btnUpdate" (click)="onUpdateTask(task)">Modifier</button>
+      </li>
+    }
+  </ul>
+
+</section>
