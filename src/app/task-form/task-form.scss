@@ -1,3 +1,4 @@
+
 ul{
   display: flex;
   flex-direction: column;
@@ -34,16 +35,18 @@ li{
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 12px;
+  font-size: 14px;
   text-align: center;
+  width: 300px;
 }
 
 .title-form textarea {
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 12px;
-  text-align: left;
+  font-size: 14px;
+  text-align: center;
+  width: 300px;
 }
 
 
@@ -52,6 +55,7 @@ li{
   border-radius: 4px;
   border: none;
   font-weight: bold;
+  font-size: 14px;
   padding: 10px 20px;
   cursor: pointer;
   background-color: #007bff;
@@ -80,12 +84,12 @@ li{
   margin-left: 10px;
 }
 
-.errorMessage{
+.error{
   color: red;
-  margin: 5px 0 5px 0;
+  font-size: x-small;
 }
 
-.is-invalid {
+.is-invalid{
   border: 2px solid red !important;
 }
 

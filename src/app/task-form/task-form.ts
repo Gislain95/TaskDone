@@ -40,6 +40,7 @@ export class TaskForm {
       });
     }
 
+    this.taskForms.reset();
   }
 
   public onDeleteTask(id: number): void {
